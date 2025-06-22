@@ -30,7 +30,6 @@
             border-bottom: 5px solid #2c3e50;
         }
         
-        /* GAYA UTAMA UNTUK MOBILE (MOBILE-FIRST) */
         header .container {
             display: flex;
             flex-direction: column;
@@ -39,7 +38,6 @@
             gap: 20px;
         }
 
-        /* LOGO UNIVERSITAS DI HEADER */
         .university-logo {
             max-height: 70px;
         }
@@ -73,9 +71,13 @@
             padding: 5px 15px;
             border: 1px solid white;
             border-radius: 5px;
+            transition: background-color 0.2s ease;
         }
 
-        /* GAYA UNTUK DESKTOP (JIKA LAYAR LEBIH DARI 768px) */
+        .header-nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
         @media (min-width: 769px) {
             header {
                 padding: 15px 0;
@@ -83,7 +85,6 @@
 
             header .container {
                 display: grid;
-                /* Mengubah area grid, karena hanya ada 1 logo */
                 grid-template-areas: "logo title info nav";
                 grid-template-columns: auto auto 1fr auto;
                 align-items: center;
@@ -92,7 +93,7 @@
             
             .university-logo {
                 grid-area: logo;
-                max-height: 120px;
+                max-height: 60px;
             }
 
             .header-title {
@@ -121,6 +122,11 @@
                 border: none;
                 padding: 3px 0;
             }
+
+            .header-nav a:hover {
+                background-color: transparent;
+                color: #d1ecf1;
+            }
         }
         
         .webinar-poster {
@@ -130,6 +136,54 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             margin-top: 25px;
         }
+
+        .download-button, .zoom-button, .certificate-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 28px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .download-button {
+            background-color: #6c757d;
+        }
+
+        .download-button:hover {
+            background-color: #5a6268;
+            transform: scale(1.05);
+        }
+
+        .zoom-button {
+            background-color: #2D8CFF;
+        }
+
+        .zoom-button:hover {
+            background-color: #0d7bff;
+            transform: scale(1.05);
+        }
+
+        .certificate-button {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .certificate-button:hover {
+            background-color: #e0a800;
+            transform: scale(1.05);
+        }
+        
+        /* == CSS BARU UNTUK CATATAN/NOTES == */
+        .certificate-note {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #6c757d;
+            margin-top: 15px;
+        }
+        /* == AKHIR CSS CATATAN/NOTES == */
 
         section {
             background: #ffffff;
@@ -194,7 +248,11 @@
             color: white;
         }
 
-        #pendaftaran a {
+        #pendaftaran, #komunitas, #sertifikat {
+            text-align: center;
+        }
+
+        #pendaftaran a.register-button {
             display: inline-block;
             background: #28a745;
             color: white;
@@ -206,12 +264,29 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        #pendaftaran a:hover {
+        #pendaftaran a.register-button:hover {
             background: #218838;
             transform: scale(1.05);
         }
 
-        /* == CSS BARU UNTUK FOOTER == */
+        .whatsapp-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 30px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #1DAE51;
+            transform: scale(1.05);
+        }
+
         footer {
             background-color: #343a40;
             color: #adb5bd;
@@ -237,8 +312,6 @@
         .footer-logo:hover {
             opacity: 1;
         }
-        /* == AKHIR CSS FOOTER == */
-
     </style>
 </head>
 <body>
@@ -246,19 +319,18 @@
 <header>
     <div class="container">
         <img src="upb.png" alt="Logo Universitas" class="university-logo">
-        
         <h1 class="header-title">Pendidikan<br>Agama 2</h1>
-        
         <div class="header-info">
             <p><strong>Tanggal:</strong><br>Minggu, 6 Juli 2025</p>
             <p><strong>Waktu:</strong><br>09.00 – 12.00 WIB</p>
             <p><strong>Tempat:</strong><br>Online via Zoom</p>
         </div>
-
         <nav class="header-nav">
             <a href="#tentang">Tentang</a>
             <a href="#jadwal">Jadwal</a>
             <a href="#pendaftaran">Pendaftaran</a>
+            <a href="#peraturan">Peraturan</a>
+            <a href="#komunitas">Gabung Grup</a>
             <a href="#sertifikat">Sertifikat</a>
             <a href="#kontak">Kontak</a>
         </nav>
@@ -271,7 +343,6 @@
     <section id="tentang">
         <h2>Tentang Webinar</h2>
         <p><strong>Tema:</strong> Relasi Agama dan Teknologi : Tantangan dan Peluang</p>
-        
         <h3>Narasumber:</h3>
         <div class="speaker-profile">
             <img src="narasumber.jpeg" alt="Foto Narasumber" class="speaker-photo">
@@ -282,7 +353,7 @@
     </section>
 
     <section id="jadwal">
-       <h2>Jadwal Acara</h2>
+        <h2>Jadwal Acara</h2>
         <table>
             <tr><th>Waktu</th><th>Kegiatan</th></tr>
             <tr><td>09.00</td><td>Pembukaan</td></tr>
@@ -297,27 +368,43 @@
 
     <section id="pendaftaran">
         <h2>Pendaftaran</h2>
-        <p>Silakan isi formulir berikut untuk mendaftar:</p>
-       <p><a href="https://forms.gle/F554n7NTVrwzhLcg7" target="_blank">Daftar Sekarang</a></p>
-        <p>📌 Gunakan email aktif, link Zoom akan dikirim H-1</p>
+        <p>Silakan isi formulir berikut untuk mendaftar.</p>
+        <a href="https://forms.gle/F554n7NTVrwzhLcg7" target="_blank" class="register-button">Daftar Sekarang</a>
+        <a href="GANTI_DENGAN_LINK_GOOGLE_DRIVE_ANDA" class="download-button" target="_blank">Unduh Background</a>
+        <a href="https://zoom.us/j/GANTI_DENGAN_ID_MEETING" class="zoom-button" target="_blank">Gabung via Zoom</a>
+        <p style="margin-top: 20px;">📌 Gunakan email aktif, link Zoom akan dikirim H-1</p>
+    </section>
+
+    <section id="peraturan">
+        <h2>Peraturan Webinar</h2>
+        <ol>
+            <li>Peserta diharapkan bergabung ke ruang Zoom 10 menit sebelum acara dimulai.</li>
+            <li>Gunakan nama asli sesuai dengan nama pendaftaran pada profil Zoom Anda.</li>
+            <li>Mohon untuk menonaktifkan mikrofon (mute) selama sesi penyampaian materi.</li>
+            <li>Peserta dapat menyalakan kamera (on-cam) dan diwajibkan menggunakan background yang telah disediakan.</li>
+            <li>Pertanyaan dapat diajukan melalui kolom chat atau saat sesi tanya jawab dibuka oleh moderator.</li>
+            <li>Berpakaian sopan dan berperilaku santun selama webinar berlangsung.</li>
+            <li>Dilarang membagikan tautan Zoom kepada pihak yang tidak terdaftar.</li>
+        </ol>
+    </section>
+
+    <section id="komunitas">
+        <h2>Gabung Grup Komunitas</h2>
+        <p>Dapatkan informasi terbaru, materi, dan diskusi langsung dengan peserta lain di grup WhatsApp kami.</p>
+        <a href="https://chat.whatsapp.com/D0IEXrMwHQ51P2DbK52oWJ" class="whatsapp-button" target="_blank">Gabung via WhatsApp</a>
     </section>
 
     <section id="sertifikat">
         <h2>Sertifikat</h2>
-        <p>E-Sertifikat akan diberikan kepada peserta yang telah memenuhi syarat.</p>
-        <ul>
-            <li>Mengisi daftar hadir</li>
-            <li>Mengikuti webinar sampai selesai</li>
-            <li>Menjawab kuis setelah acara</li>
-        </ul>
-        <p>Sertifikat akan dikirim maksimal 7 hari setelah acara.</p>
+        <p>E-Sertifikat akan diberikan kepada peserta yang telah memenuhi syarat. Jika Anda sudah memenuhi syarat, silakan unduh sertifikat Anda di bawah ini:</p>
+        <a href="GANTI_DENGAN_LINK_SERTIFIKAT_ANDA" class="certificate-button" target="_blank">Unduh Sertifikat Anda</a>
+        
+        <p class="certificate-note">Sertifikat akan dibagikan paling lambat 7 hari setelah acara.</p>
     </section>
-
     <section id="kontak">
-         <h2>Kontak sama link grup</h2>
-        <a href="https://chat.whatsapp.com/D0IEXrMwHQ51P2DbK52oWJ">Gabung Grup WhatsApp Kami</a>
-        <p>WhatsApp: +62 856-9274-8872</p>
-        <p>WhatsApp: +62 838-3488-9193</p>
+        <h2>Kontak</h2>
+        <p>Melaningsih: +62 856-9274-8872</p>
+        <p>Jamaludin: +62 838-3488-9193</p>
     </section>
 </div>
 
